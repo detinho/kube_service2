@@ -7,6 +7,11 @@ metadata:
     app: kube-service2
 spec:
   replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      # maxSurge: 1
   selector:
     matchLabels:
       app: kube-service2
@@ -30,8 +35,3 @@ spec:
             timeoutSeconds: 1
             successThreshold: 2
             failureThreshold: 3
-          resources:
-            requests:
-              cpu: "250m"
-            limits:
-              cpu: "500m"

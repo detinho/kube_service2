@@ -1,5 +1,7 @@
 package br.com.detinho.kube_service2;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,8 @@ import java.util.Iterator;
 @SpringBootApplication
 @RestController
 public class KubeService2Application {
+
+	private static Logger logger = LoggerFactory.getLogger(KubeService2Application.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(KubeService2Application.class, args);
@@ -36,7 +40,7 @@ public class KubeService2Application {
 				ips += address.getHostAddress() + " ";
 			}
 		}
-		final String message = "Hello Kube Service 2 IPs: " + ips.trim();
+		final String message = "Jenkins - Hello Kube Service 2 IPs: " + ips.trim();
 		System.out.println(message);
 		return message;
 	}
@@ -46,6 +50,7 @@ public class KubeService2Application {
 		if (Math.random() > 0.9) {
 			throw new RuntimeException("Error");
 		}
+		logger.info("Ok");
 		return "Ok";
 	}
 
