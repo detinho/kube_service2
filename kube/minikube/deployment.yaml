@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-service2
+  namespace: default
+  labels:
+    app: kube-service2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kube-service2
+  template:
+    metadata:
+      labels:
+        app: kube-service2
+    spec:
+      containers:
+        - name: kube-service2
+          image: $BUILDIMG
+          ports:
+            - name: web
+              containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /hello
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 3
+            timeoutSeconds: 1
+            successThreshold: 2
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: "250m"
+            limits:
+              cpu: "500m"

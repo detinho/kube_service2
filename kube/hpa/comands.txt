@@ -1,0 +1,2 @@
+minikube start --cpus 4 --memory 4096 --extra-config=controller-manager.horizontal-pod-autoscaler-sync-period=5s --extra-config=controller-manager.horizontal-pod-autoscaler-downscale-stabilization=2m
+
