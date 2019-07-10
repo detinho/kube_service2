@@ -40,7 +40,7 @@ public class KubeService2Application {
 				ips += address.getHostAddress() + " ";
 			}
 		}
-		final String message = "Jenkins - Hello Kube Service 2 IPs: " + ips.trim();
+		final String message = "Jenkins - Detinho - Hello Kube Service 2 IPs: " + ips.trim();
 		System.out.println(message);
 		return message;
 	}
